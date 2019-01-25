@@ -6,16 +6,26 @@ namespace p1
     {
         static void Main(string[] args)
         {
-            var a=0;
-            var b=0.0;
-            var c=true;
+            
+            
+            char t;
             String brand;
             decimal cost=0m;
-            double bill;
+            double bill=10.0;
             int quantity;
+            bool gender =false;
 
             Console.WriteLine("Enter the name");
+            
+
             var f= Console.ReadLine();
+            Console.WriteLine("PRESS M IF YOU ARE MALE .ELSE PRESS ANY KEY");
+            t=Convert.ToChar(Console.ReadLine());
+            if(t=='M'){
+                gender=true;
+            }
+            Console.WriteLine("Gender:\t"+(gender?"Male":"Female"));
+
             while(f==""){
                 f= Console.ReadLine();
             }
@@ -34,7 +44,7 @@ namespace p1
              quantity=Convert.ToInt32(Console.ReadLine());
             switch(brand){
                 case "Nestle": Console.WriteLine($"you selected the Nestle {e} gallon");
-                                cost=1.5m*(e);
+                                cost=getConstraint(1.5m,e);
                                 
                 break;
                 case "Pure": Console.WriteLine($"You selected the pure {e} gallon");
@@ -47,7 +57,7 @@ namespace p1
                 break;
             }
             Console.WriteLine($"total cost is {cost}");
-            if( cost< 10 )
+            if( cost< Convert.ToDecimal(bill))
             {
                 Console.WriteLine("Thank for shopping");
             }
@@ -56,13 +66,13 @@ namespace p1
                 Console.WriteLine("You have a free 1 gallon pure water bottle");
             }
            
-
-
-
-
-            
+         
 
             
         }
+
+        public static decimal getConstraint(decimal d, int e){
+            return e*d;
+            }
     }
 }
